@@ -23,6 +23,7 @@ import "assets/vendor/nucleo/css/nucleo.css";
 import "assets/vendor/font-awesome/css/font-awesome.min.css";
 import "assets/scss/argon-design-system-react.scss?v1.1.0";
 
+import WatchViewIndex from "views/watchview/WatchViewIndex";
 import Index from "views/Index.js";
 import Landing from "views/examples/Landing.js";
 import Login from "views/examples/Login.js";
@@ -32,23 +33,24 @@ import Register from "views/examples/Register.js";
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/" exact render={props => <Index {...props} />} />
-      <Route
-        path="/landing-page"
-        exact
-        render={props => <Landing {...props} />}
-      />
-      <Route path="/login-page" exact render={props => <Login {...props} />} />
-      <Route
-        path="/profile-page"
-        exact
-        render={props => <Profile {...props} />}
-      />
-      <Route
-        path="/register-page"
-        exact
-        render={props => <Register {...props} />}
-      />
+        <Route path="/" exact render={props => <WatchViewIndex {...props} />} />
+        <Route path="/index" exact render={props => <Index {...props} />} />
+      {/*<Route*/}
+      {/*  path="/landing-page"*/}
+      {/*  exact*/}
+      {/*  render={props => <Landing {...props} />}*/}
+      {/*/>*/}
+      {/*<Route path="/login-page" exact render={props => <Login {...props} />} />*/}
+      {/*<Route*/}
+      {/*  path="/profile-page"*/}
+      {/*  exact*/}
+      {/*  render={props => <Profile {...props} />}*/}
+      {/*/>*/}
+      {/*<Route*/}
+      {/*  path="/register-page"*/}
+      {/*  exact*/}
+      {/*  render={props => <Register {...props} />}*/}
+      {/*/>*/}
       <Redirect to="/" />
     </Switch>
   </BrowserRouter>,
