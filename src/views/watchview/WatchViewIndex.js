@@ -1,5 +1,18 @@
 import React from "react";
 import Inputs from "../IndexSections/Inputs";
+import classnames from "classnames";
+// reactstrap components
+import {
+    FormGroup,
+    Input,
+    InputGroupAddon,
+    InputGroupText,
+    InputGroup,
+    Container,
+    Row,
+    Col
+} from "reactstrap";
+
 class WatchViewIndex extends React.Component {
     componentDidMount() {
         document.documentElement.scrollTop = 0;
@@ -9,7 +22,6 @@ class WatchViewIndex extends React.Component {
     render() {
         return (
             <>
-                WatchView FrontEnd Start
                 <Inputs />
             </>
         );
