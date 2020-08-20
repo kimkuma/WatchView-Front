@@ -17,13 +17,31 @@ import Download from "../IndexSections/Download";
 import CardsFooter from "../../components/Footers/CardsFooter";
 
 class WatchViewIndex extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            searchFocused : true,
+            keyword : props.keyword,
+        }
+
+        this.handleChangeKeyword = this.handleChangeKeyword.bind(this);
+    }
+
     componentDidMount() {
         document.documentElement.scrollTop = 0;
         document.scrollingElement.scrollTop = 0;
-        this.refs.main.scrollTop = 0;
+
     }
 
-    state = {};
+    /* 영화 검색어 입력*/
+    handleChangeKeyword = e => {
+        this.setState({
+            keyword: e.target.value
+        });
+    };
+
+
     render() {
         return (
             <>
@@ -36,8 +54,9 @@ class WatchViewIndex extends React.Component {
                                 <Row>
                                     <Col lg="100" sm="6">
                                         <FormGroup
-                                            className={classnames({
-                                                focused: this.state.searchFocused
+                                            className={
+                                                classnames({
+                                                    focused: this.state.searchFocused
                                             })}
                                         >
                                             <InputGroup className="mb-4">
@@ -48,9 +67,12 @@ class WatchViewIndex extends React.Component {
                                                 </InputGroupAddon>
                                                 <Input
                                                     placeholder="영화를 검색해주세요."
-                                                    type="text"
+                                                    name={"keyword"}
+                                                    type={"text"}
                                                     onFocus={e => this.setState({ searchFocused: true })}
                                                     onBlur={e => this.setState({ searchFocused: false })}
+                                                    onChange={this.handleChangeKeyword}
+                                                    value={this.state.keyword}
                                                 />
                                             </InputGroup>
                                         </FormGroup>
