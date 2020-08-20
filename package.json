@@ -1,33 +1,13 @@
 {
-  "name": "argon-design-system-react",
-  "version": "1.1.0",
-  "description": "React version of Argon Design System by Creative Tim",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/creativetimofficial/argon-design-system-react.git"
-  },
-  "keywords": [
-    "react",
-    "reactjs",
-    "argon",
-    "argon-react",
-    "design",
-    "design-react",
-    "argon-design",
-    "argon-design-react",
-    "kit",
-    "react-kit",
-    "argon-design-system",
-    "argon-design-system-react",
-    "design-system-react"
-  ],
-  "author": "Creative Tim",
+  "original-view-name": "argon-design-system-react",
+  "original-version": "1.1.0",
+  "original-author": "Creative Tim",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/creativetimofficial/argon-design-system-react/issues"
-  },
-  "homepage": "https://demos.creative-tim.com/argon-design-system-react/",
+  "name": "watchview",
+  "version": "0.0.1",
+  "description": "React version of Argon Design System by Creative Tim(Original).watchview developer kuma.",
+  "author": "kimkuma",
+  "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && gulp licenses",
