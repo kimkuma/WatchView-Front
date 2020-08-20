@@ -1,16 +1,7 @@
-/* import */
-import Config from '../assets/config.json';
-
 /**
- * setUrl
+ * 영화데이터 조회 (Proxy 설정하여 처리 - setupProxy.js)
+  * @returns {string}
  */
-export function setUrl() {
-    return Config.watchViewApi.protocol + '//' + Config.watchViewApi.host + ':' + Config.watchViewApi.port;
-}
-
-/**
- * setTestUrl
- */
-export function setTestUrl() {
-    return Config.watchViewApi.protocol + '//' + Config.watchViewApi.testHost + ':' + Config.watchViewApi.port;
+export function getMovie() {
+    return '/api/searchMovie';
 }

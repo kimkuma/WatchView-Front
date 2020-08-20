@@ -1,8 +1,0 @@
-{
-  "watchViewApi": {
-    "protocol": "http:",
-    "host": "127.0.0.1",
-    "testHost": "127.0.0.1",
-    "port": 8888
-  }
-}

@@ -1,6 +1,8 @@
-import React from "react";
-import Inputs from "../IndexSections/Inputs";
-import classnames from "classnames";
+import React from 'react';
+import classnames from 'classnames';
+import axios from 'axios';
+import * as baseComponent from '../../components/base.component';
+
 // reactstrap components
 import {
     FormGroup,
@@ -21,11 +23,15 @@ class WatchViewIndex extends React.Component {
         super(props);
 
         this.state = {
+            loading: false,
             searchFocused : true,
             keyword : props.keyword,
+            ItemList: [],
         }
 
         this.handleChangeKeyword = this.handleChangeKeyword.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
+        this.loadMovie = this.loadMovie.bind(this);
     }
 
     componentDidMount() {
@@ -34,13 +40,37 @@ class WatchViewIndex extends React.Component {
 
     }
 
+    /*  엔터 이벤트 */
+    handleKeyPress = (e) => {
+        if(e.key === 'Enter') {
+            this.loadMovie();
+        }
+    }
+
     /* 영화 검색어 입력*/
-    handleChangeKeyword = e => {
+    handleChangeKeyword = (e) => {
         this.setState({
             keyword: e.target.value
         });
     };
 
+    /* 영화데이터 */
+    loadMovie = async () => {
+        axios
+            .get(baseComponent.getMovie()+'?keyword='+this.state.keyword)
+            .then(({ data }) => {
+                this.setState({
+                    loading: true,
+                    ItemList: data.Item
+                });
+            })
+            .catch(e => {   // API 호출 실패
+               console.error(e);  // 에러표시
+                this.setState({
+                    loading: false
+                });
+            });
+    }
 
     render() {
         return (
@@ -72,6 +102,7 @@ class WatchViewIndex extends React.Component {
                                                     onFocus={e => this.setState({ searchFocused: true })}
                                                     onBlur={e => this.setState({ searchFocused: false })}
                                                     onChange={this.handleChangeKeyword}
+                                                    onKeyPress={this.handleKeyPress}
                                                     value={this.state.keyword}
                                                 />
                                             </InputGroup>
