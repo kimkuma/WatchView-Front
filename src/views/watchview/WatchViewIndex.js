@@ -25,7 +25,7 @@ class WatchViewIndex extends React.Component {
         this.state = {
             loading: false,
             searchFocused : true,
-            keyword : props.keyword,
+            keyword : '',
             ItemList: [],
         }
 
@@ -43,7 +43,12 @@ class WatchViewIndex extends React.Component {
     /*  엔터 이벤트 */
     handleKeyPress = (e) => {
         if(e.key === 'Enter') {
-            this.loadMovie();
+            if(e.target.value === '') {
+                alert('영화제목을 입력해야되요.');
+                return;
+            } else {
+                this.loadMovie();
+            }
         }
     }
 
@@ -57,7 +62,7 @@ class WatchViewIndex extends React.Component {
     /* 영화데이터 */
     loadMovie = async () => {
         axios
-            .get(baseComponent.getMovie()+'?keyword='+this.state.keyword)
+            .get(baseComponent.getMovie()+'?keyword=' + this.state.keyword)
             .then(({ data }) => {
                 this.setState({
                     loading: true,
